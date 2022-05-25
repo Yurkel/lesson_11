@@ -1,0 +1,127 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  /*font-size: 16px;*/
+}
+
+body {
+  /*margin: 50px;
+  font-family: Arial, Helvetica, sans-serif;*/
+}
+
+.wrap {
+  margin-top: 200px;
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+}
+
+.cube {
+  margin: auto;
+  position: relative;
+  height: 200px;
+  width: 200px;
+  transform-style: preserve-3d;
+  animation: rotate 20s infinite linear;
+}
+
+.cube>div {
+  position: absolute;
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  /*opacity: 0.7;*/
+  background-color: #ffffff;
+  border: 2px solid black;
+}
+
+.front {
+  background-image: url(img/front.jpg);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: 50% 50%;
+  transform: translateZ(100px);
+}
+
+.back {
+  background-image: url(img/back.jpg);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: 50% 50%;
+  transform: rotateY(180deg) translateZ(-100px);
+}
+
+.top {
+  background-image: url(img/top.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50% 50%;
+  transform: rotateX(-270deg) translateY(-100px);
+  transform-origin: top center;
+}
+
+.bottom {
+  background-image: url(img/bottom.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50% 50%;
+  transform: rotateX(270deg) translateY(100px);
+  transform-origin: bottom center;
+}
+
+.left {
+  background-image: url(img/left.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 50% 50%;
+  transform: rotateY(270deg) translateX(-100px);
+  transform-origin: top left;
+}
+
+.right {
+  background-image: url(img/right.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 50% 50%;
+  transform: rotateY(-270deg) translateX(100px);
+  transform-origin: top right;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+.wrap:hover .front {
+  transform: translateZ(200px);
+}
+
+.wrap:hover .back {
+  transform: translateZ(-200px) rotateY(180deg);
+}
+
+.wrap:hover .right {
+  transform: rotateY(-270deg) translateZ(100px) translateX(100px);
+}
+
+.wrap:hover .left {
+  transform: rotateY(270deg) translateZ(100px) translateX(-100px);
+}
+
+.wrap:hover .top {
+  transform: rotateX(-270deg) translateZ(100px) translateY(-100px);
+}
+
+.wrap:hover .bottom {
+  transform: rotateX(270deg) translateZ(100px) translateY(100px);
+}
+
+.cube>div {
+  transition: transform 0.2s ease-in;
+}
